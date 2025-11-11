@@ -28,6 +28,8 @@ def attention(
 
     scores = (query @ key.transpose(-2, -1)) / scale
 
+    # TODO : check mask logic
+    
     if mask is not None:
         scores.masked_fill_(mask=mask, value=float('-inf'))
         

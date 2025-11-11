@@ -27,7 +27,9 @@ class FFN(nn.Module):
 class MultiHeadAttention(nn.Module):
     def __init__(self, d_model : int, n_heads : int, log_attention : bool =False):
         super().__init__()
+
         # TODO : add functionality to log attention scores for interp
+        # TODO : test mask functionality in attention
 
         self.d_model = d_model
         self.n_heads = n_heads
@@ -79,6 +81,9 @@ class EmbeddingLayer(nn.Module):
         return math.sqrt(self.d_model) * embeddings
 
 class SinusoidalPositionalEncoding(nn.Module):
+
+    # TODO test layer with batches of input
+
     def __init__(self, d_model: int, block_size: int):
         super().__init__()
         position: Tensor = torch.arange(block_size).unsqueeze(1)
